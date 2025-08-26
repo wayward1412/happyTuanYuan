@@ -1,0 +1,646 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #333;
+}
+
+.container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    position: relative;
+    z-index: 10;
+    animation: fadeIn 1s ease-out;
+    transition: all 0.5s;
+}
+
+h1 {
+    color: #ff6b6b;
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+}
+
+.cake {
+    font-size: 5em;
+    margin: 20px 0;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.cake:hover {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.balloon {
+    position: absolute;
+    width: 50px;
+    height: 70px;
+    border-radius: 50%;
+    animation: float 8s infinite ease-in-out;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.balloon:before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 50px;
+    background-color: #999;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-50px) rotate(5deg); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+}
+
+.btn {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    background-color: #ff4757;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.hidden {
+    display: none;
+}
+
+#message {
+    font-style: italic;
+    color: #666;
+    margin-top: 30px;
+    font-size: 1.1em;
+    transition: all 0.5s;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #f00;
+    border-radius: 50%;
+    animation: confetti-fall 5s linear infinite;
+    z-index: 1;
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 音乐播放器样式 */
+.music-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    transition: all 0.3s ease;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.control-btn {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.control-btn:hover {
+    background-color: #ff4757;
+    transform: scale(1.1);
+}
+
+.lyrics-btn {
+    background-color: #70a1ff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 5px;
+    transition: all 0.2s;
+}
+
+.lyrics-btn:hover {
+    background-color: #5352ed;
+}
+
+.song-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.lyrics-container {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    display: none;
+    opacity: 0.8;
+}
+
+.lyrics-line {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.lyrics-line.highlight {
+    color: #ff6b6b;
+    font-weight: bold;
+    transform: scale(1.05);
+}
+
+.progress-container {
+    width: 100%;
+    height: 5px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #ff6b6b;
+    border-radius: 5px;
+    width: 0%;
+    transition: width 0.1s;
+}
+
+/* 新增的烟花样式 */
+.firework {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 5px rgba(255, 200, 0, 0.7);
+    animation: firework-animation 2s ease-out infinite;
+    z-index: 2;
+}
+
+@keyframes firework-animation {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty));
+        opacity: 0;
+    }
+}
+
+/* 蛋糕蜡烛火焰 */
+.flame {
+    position: absolute;
+    width: 15px;
+    height: 30px;
+    background: linear-gradient(to top, #ff7800, #ffef00);
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 0 10px #ff7800, 0 0 20px #ffef00;
+    animation: flicker 0.8s infinite alternate;
+    transform-origin: center bottom;
+    z-index: 11;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+}
+
+@keyframes flicker {
+    0%, 100% {
+        transform: translateX(-50%) scaleY(1) rotate(-5deg);
+    }
+    50% {
+        transform: translateX(-50%) scaleY(1.1) rotate(5deg);
+    }
+}
+
+/* 照片墙 */
+.photo-wall {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.photo {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.photo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.close-wall {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 101;
+}
+
+/* 生日倒计时 */
+.countdown {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+    font-size: 1.2em;
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+/* 蛋糕上的蜡烛 */
+.candle {
+    position: absolute;
+    width: 10px;
+    height: 40px;
+    background: linear-gradient(to bottom, #fff, #f5f5f5);
+    border-radius: 5px;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: none;
+}
+
+/* 打字效果 */
+.typewriter {
+    border-right: 3px solid;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+/* 响应式调整 */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    .cake {
+        font-size: 3em;
+    }
+}
+
+@keyframes float-up {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -150px) scale(0.5);
+    }
+}
+
+  .birthday-question {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        z-index: 1002;
+        max-width: 90%;
+        text-align: center;
+    }
+    
+    .head1 {
+        font-family: 'Arial', sans-serif;
+        color: #ff6b6b;
+        margin-bottom: 30px;
+        font-size: 2em;
+    }
+    
+    .btn-primary {
+        background-color: #70a1ff;
+        border-color: #70a1ff;
+        font-size: 1.2em;
+        padding: 10px 20px;
+    }
+    
+    .btn-danger {
+        background-color: #ff6b6b;
+        border-color: #ff6b6b;
+        font-size: 1.2em;
+        padding: 10px 20px;
+        position: relative;
+    }
+    
+    @keyframes buttonMove {
+        0%   {top: 0px;}
+        25%  {top: -50px; left: 20px;}
+        50%  {top: 50px; left: -20px;}
+        75%  {top: -30px; left: 30px;}
+        100% {top: 0px; left: 0px;}
+    }
+    
+    @keyframes buttonMove2 {
+        0%   {top: 0px; left: 0px;}
+        25%  {top: -100px; left: 100px;}
+        50%  {top: 100px; left: -100px;}
+        75%  {top: -150px; left: 150px;}
+        100% {top: 0px; left: 0px;}
+    }
+    
+    .birthday-celebration {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 1003;
+    }
+    
+    .birthday-celebration h1 {
+        font-size: 3em;
+        color: #ff6b6b;
+        animation: bounce 1s infinite;
+    }
+
+/* 新增时钟按钮样式 */
+.clock-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff6b6b"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/></svg>');
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+    display: none;
+}
+
+.time-display {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 2em;
+    font-weight: bold;
+    color: #ff6b6b;
+    z-index: 100;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    display: none;
+    font-family: 'Arial', sans-serif;
+}/* 基础样式保持不变，添加以下媒体查询 */
+
+@media (max-width: 768px) {
+    /* 调整容器 */
+    .container {
+        width: 90%;
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    /* 调整标题大小 */
+    h1 {
+        font-size: 2em;
+        margin-bottom: 15px;
+    }
+    
+    /* 调整文字大小 */
+    p {
+        font-size: 1em;
+        line-height: 1.5;
+    }
+    
+    /* 调整蛋糕图标大小 */
+    .cake {
+        font-size: 3em;
+        margin: 15px 0;
+    }
+    
+    /* 调整按钮大小 */
+    .btn {
+        padding: 12px 24px;
+        font-size: 1.1em;
+        min-width: 120px;
+    }
+    
+    /* 减少气球数量 */
+    .balloon {
+        width: 40px;
+        height: 56px;
+    }
+    
+    /* 调整音乐播放器 */
+    .music-player {
+        width: 90%;
+        bottom: 10px;
+        right: 5%;
+    }
+    
+    /* 调整倒计时样式 */
+    .countdown {
+        top: 10px;
+        left: 10px;
+        font-size: 1em;
+        padding: 8px 12px;
+    }
+    
+    /* 调整时间显示 */
+    .time-display {
+        font-size: 1.5em;
+        padding: 10px 20px;
+        bottom: 20px;
+    }
+    
+    /* 调整生日问题弹窗 */
+    .birthday-question {
+        width: 90%;
+        padding: 20px;
+    }
+    
+    .head1 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+    
+    /* 调整照片墙 */
+    .photo {
+        width: 45%;
+        height: 150px;
+        margin: 5px;
+    }
+    
+    /* 隐藏部分动画元素 */
+    .confetti:nth-child(n+10) {
+        display: none;
+    }
+    
+    /* 调整按钮间距 */
+    .btn + .btn {
+        margin-top: 15px;
+    }
+}
+
+/* 针对小屏幕手机的额外调整 */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    .cake {
+        font-size: 2.5em;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+    
+    /* 进一步减少动画元素 */
+    .balloon:nth-child(n+5) {
+        display: none;
+    }
+    
+    .confetti {
+        display: none;
+    }
+    
+    /* 调整布局间距 */
+    .container {
+        padding: 15px;
+    }
+}

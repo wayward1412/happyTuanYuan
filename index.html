@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>团元生日快乐！</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/jpg" href="./assets/icons/tuanyuan2.jpg">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+
+
+
+
+<!-- 时钟按钮和时间显示 -->
+<button class="clock-btn" id="clockBtn"></button>
+<div class="time-display" id="timeDisplay"></div>
+
+
+
+
+    <div class="countdown" id="countdown"></div>
+    <div class="container">
+        <h1 id="birthdayTitle">2025团元生日专属版</h1>
+        <div class="cake" id="birthdayCake">🎂
+            <div class="candle" id="candle"></div>
+            <div class="flame" id="flame"></div>
+        </div>
+        <p id="greetingText">在这个特别的日子里，祝你：</p>
+        <p id="wishText">健康快乐，心想事成，<br>每一天都充满阳光和欢笑！</p>
+        <button class="btn" id="surpriseBtn">点击有惊喜</button>
+        <button class="btn hidden" id="photoBtn" style="background-color: #70a1ff;">查看照片墙</button>
+       <!-- <p id="message" class="hidden">你是最棒的！愿新的一岁带给你无限可能！</p>-->
+        <p id="message" class="hidden">Made with ❤️ by 放肆大人</p>
+    </div>
+	
+	
+	
+	<!-- 在<body>标签内的container div之后添加这个新元素 -->
+<div class="birthday-question hidden" id="birthdayQuestion">
+    <h1 class="text-center head1">你喜欢这个生日礼物吗?</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-6 text-right"> 
+                <button class="btn btn-primary" id="yes-btn">超喜欢！</button>
+            </div>
+            <div class="col-xs-6"> 
+                <button class="btn btn-danger" id="no-btn">不喜欢！</button>
+            </div>
+        </div>
+    </div>
+</div>
+	
+	
+	
+
+    <!-- 照片墙 -->
+    <div class="photo-wall" id="photoWall">
+        <div class="close-wall" id="closeWall">×</div>
+        <div class="photo" style="background-image: url('./assets/icons/tuanyuan2.jpg')"></div>
+        <div class="photo" style="background-image: url('./assets/icons/guigui.jpg')"></div>
+        <div class="photo" style="background-image: url('./assets/icons/tuanyuan3.jpg')"></div>
+        <div class="photo" style="background-image: url('./assets/icons/cake.jpg')"></div>
+        <div class="photo" style="background-image: url('./assets/icons/huli.jpg')"></div>
+        <div class="photo" style="background-image: url('./assets/icons/wawa.jpg')"></div>
+    </div>
+
+    <!-- 音乐播放器 -->
+    <div class="music-player" id="musicPlayer">
+        <div class="song-title">生日歌</div>
+        <div class="player-controls">
+            <button class="control-btn" id="playBtn">▶</button>
+            <button class="control-btn" id="pauseBtn">❚❚</button>
+        </div>
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <button class="lyrics-btn" id="lyricsBtn">查看歌词</button>
+        <div class="lyrics-container" id="lyricsContainer">
+            <div class="lyrics-line">已经过了12点</div>
+            <div class="lyrics-line">所以赶快闭上眼</div>
+            <div class="lyrics-line">这是属于你的节</div>
+            <div class="lyrics-line">许下属与你的缘</div>
+            <div class="lyrics-line">考上梦想的大学</div>
+            <div class="lyrics-line">要赚好多好多钱</div>
+            <div class="lyrics-line">这365天会有人为你思念</div>
+            <div class="lyrics-line">不管有没有人在你身边</div>
+            <div class="lyrics-line">都不能阻挡今夜的特别</div>
+            <div class="lyrics-line">快乐的心情一秒都别忽略</div>
+            <div class="lyrics-line">让所有心愿都完美实现</div>
+            <div class="lyrics-line">happy birthday to you</div>
+            <div class="lyrics-line">happy birthday to you</div>
+            <div class="lyrics-line">把所有的遗憾留在旧的一面</div>
+            <div class="lyrics-line">希望会出现在明天</div>
+            <div class="lyrics-line">祝你生日快乐</div>
+            <div class="lyrics-line">祝你生日快乐</div>
+            <div class="lyrics-line">在这个瞬间你是唯一主角</div>
+            <div class="lyrics-line">祝你生日快乐</div>
+            <div class="lyrics-line">已经过了12点</div>
+            <div class="lyrics-line">所以赶快闭上眼</div>
+            <div class="lyrics-line">这是属于你的节</div>
+            <div class="lyrics-line">许下属于你的愿</div>
+            <div class="lyrics-line">融化不安的错觉</div>
+            <div class="lyrics-line">镜子里迷人的脸</div>
+            <div class="lyrics-line">要和太阳肩并肩</div>
+            <div class="lyrics-line">每天都是晴天</div>
+            <div class="lyrics-line">不管有没有人在你身边</div>
+            <div class="lyrics-line">都不能阻挡今夜的特别</div>
+            <div class="lyrics-line">快乐的心情一秒都别忽略</div>
+            <div class="lyrics-line">让所有心愿都完美实现</div>
+            <div class="lyrics-line">happy birthday to you</div>
+            <div class="lyrics-line">happy birthday to you</div>
+            <div class="lyrics-line">把所有的遗憾留在旧的一年</div>
+            <div class="lyrics-line">希望会出现d在明天</div>
+            <div class="lyrics-line">祝你生日快乐</div>
+            <div class="lyrics-line">祝你生日快乐</div>
+            <div class="lyrics-line">在这个瞬间你是唯一主角</div>
+            <div class="lyrics-line">祝你生日快乐</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
